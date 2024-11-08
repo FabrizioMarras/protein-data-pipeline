@@ -9,8 +9,6 @@ Before starting, make sure you have the following installed on your system:
 - `pip` (Python package installer)
 - Virtual environment package (`venv`)
 
-#
-
 ## Step 1: Project Setup
 
 ### Clone the Repository
@@ -48,4 +46,30 @@ Hello
 Apache
 Beam
 ```
+
+### Step 3: Create a Cloud-based SQL Database
+
+This step involves setting up a cloud-based PostgreSQL database and connecting to it using Python.
+
+1. **Create a PostgreSQL Database**:
+- Use Google Cloud Platform (or your preferred cloud provider) to create a PostgreSQL database.
+- Database Name: `protein_data`
+- Allow connections from your local IP for testing.
+
+2. **Set Up Environment Variables**:
+Create a `.env` file in the project root:
+```bash
+DB_HOST=<your-database-host>
+DB_PORT=5432
+DB_NAME=protein_data
+DB_USER=<your-username>
+DB_PASSWORD=<your-password>
+```
+
+3. **Connecting to the Database**:
+- The `db_connection.py` script handles the connection using `psycopg2`.
+- Run `python3 db_connection.py` to verify the connection.
+If successful you should read `Successfully connected to the database!` in the console.
+
+**Note**: Make sure to exclude the `.env` file from version control by adding it to `.gitignore`.
 
