@@ -1,0 +1,68 @@
+/* src/static/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-container {
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #c9c9c9;
+}
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+.result, .error {
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.result {
+    background-color: #e7f3fe;
+    border: 1px solid #b3d4fc;
+}
+.error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+
+ul {
+    background: #fff;
+    padding: 0 !important;
+    border:1px solid #c9c9c9;
+}
+li {
+    list-style: none;
+}
+/* Style for the autocomplete menu items */
+.ui-menu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #00000080; 
+}
+
+/* Style for the active (focused) item */
+.ui-state-active {
+    color: #000000;  
+    font-weight: 900;          /* Black text color */
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protein Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ url_for('static', filename='js/autocomplete.js') }}"></script>
+    
+    <!-- Load Mol* Viewer Library (This makes Molstar globally available) -->
+    <script src="https://cdn.jsdelivr.net/npm/molstar@latest/build/viewer/molstar.js"></script>
+</head>
+<body>
+    <div class="search-container">
+        <h2>Protein Search</h2>
+        <form id="search-form" action="/search" method="get">
+            <input type="text" id="gene_name" name="gene_name" placeholder="Enter protein name..." autocomplete="off">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+    <div id="results">
+        {% if structure_url %}
+            <h3>3D Structure Visualization</h3>
+            <p>Structure URL: {{ structure_url }}</p>
+
+            <div id="molstar-container" style="width: 100%; height: 600px; margin-top: 20px;"></div>
+
+            <!-- Load Mol* Viewer Script as Module -->
+            <script type="module" src="{{ url_for('static', filename='js/molstar_viewer.js') }}"></script>
+            <!-- Import and Initialize the Viewer -->
+            <script type="module">
+                import { initViewerOnLoad } from "{{ url_for('static', filename='js/molstar_viewer.js') }}";
+
+                const structureUrl = "{{ structure_url }}";  // Get structure URL from Flask template
+                initViewerOnLoad(structureUrl);  // Call the function to initialize the viewer
+            </script>
+        {% endif %}
+
+        {% if content %}
+        <div class="protein-content">{{ content|safe }}</div>
+        {% elif error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
