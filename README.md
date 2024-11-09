@@ -73,3 +73,4 @@ If successful you should read `Successfully connected to the database!` in the c
 
 **Note**: Make sure to exclude the `.env` file from version control by adding it to `.gitignore`.
 
+### Step 4: Set up Auth
